@@ -21,6 +21,23 @@
       ff02::2 ip6-allrouters
       ff02::3 ip6-allhosts
 
+- name: Delete /etc/resolv.conf
+  ansible.builtin.file:
+    path: /etc/resolv.conf
+    state: absent
+
+- name: Force /etc/resolv.conf to use router as DNS server
+  ansible.builtin.blockinfile:
+    path: /etc/resolv.conf
+    create: true
+    block: |
+      nameserver 192.168.0.1
+
+- name: Esnure /etc/resolv.conf is immutable
+  ansible.builtin.file:
+    path: /etc/resolv.conf
+    attr: +i
+
 - name: Check for bridge-nf-call-iptables
   ansible.builtin.stat:
     path: /proc/sys/net/bridge/bridge-nf-call-iptables
