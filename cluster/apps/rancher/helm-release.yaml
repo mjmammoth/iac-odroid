@@ -8,7 +8,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: rancher-latest/rancher
+      chart: rancher
       sourceRef:
         kind: HelmRepository
         name: rancher-latest
