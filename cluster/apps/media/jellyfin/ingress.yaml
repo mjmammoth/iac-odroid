@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    hajimari.io/enable: "true"
+    hajimari.io/icon: weather-sunset
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    kubernetes.io/ingress.class: traefik
+    ingress.kubernetes.io/protocol: http
+  name: jellyfin
+  namespace: media
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: jelly.mark.cloud
+    http:
+      paths:
+      - backend:
+          service:
+            name: jellyfin
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - jelly.mark.cloud
+    secretName: jelly-tls
