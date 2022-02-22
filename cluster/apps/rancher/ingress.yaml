@@ -8,7 +8,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     kubernetes.io/ingress.class: traefik
   name: rancher
-  namespace: media
+  namespace: cattle-system
 spec:
   rules:
   - host: "rancher.${SECRET_DOMAIN}"
