@@ -323,6 +323,7 @@ generate_ansible_hosts() {
             fi
                 printf "        %s:\n" "${node_hostname}"
                 printf "          ansible_host: %s\n" "${!var}"
+                printf "          ansible_python_interpreter: /usr/bin/python3\n"
             else
                 worker_node_count=$((worker_node_count+1))
             fi
@@ -343,6 +344,7 @@ generate_ansible_hosts() {
                     fi
                     printf "        %s:\n" "${node_hostname}"
                     printf "          ansible_host: %s\n" "${!var}"
+                    printf "          ansible_python_interpreter: /usr/bin/python3\n"
                 fi
             done
         fi
