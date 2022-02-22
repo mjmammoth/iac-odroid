@@ -83,7 +83,7 @@ data "http" "ipv4" {
 }
 
 resource "cloudflare_record" "ipv4" {
-  name    = "ipv4"
+  name    = "@"
   zone_id = lookup(data.cloudflare_zones.domain.zones[0], "id")
   value   = chomp(data.http.ipv4.body)
   proxied = true
