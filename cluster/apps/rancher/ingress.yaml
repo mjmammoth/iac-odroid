@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    hajimari.io/enable: "true"
+    hajimari.io/icon: weather-sunset
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    kubernetes.io/ingress.class: traefik
+  name: rancher
+  namespace: media
+spec:
+  rules:
+  - host: "rancher.${SECRET_DOMAIN}"
+    http:
+      paths:
+      - backend:
+          service:
+            name: rancher
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - "rancher.${SECRET_DOMAIN}"
+    secretName: rancher-tls
