@@ -27,4 +27,4 @@ spec:
     replicas: 3
     ingress:
       enabled: false
-    tls: false
+    tls: bogusvalue
