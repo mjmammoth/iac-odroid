@@ -1,0 +1,29 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: rancher
+  namespace: cattle-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: rancher-latest/rancher
+      sourceRef:
+        kind: HelmRepository
+        name: rancher-latest
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    hostname: "rancher.${SECRET_DOMAIN}"
+    replicas: 3
+    ingress:
+      enabled: false
+    tls: false
