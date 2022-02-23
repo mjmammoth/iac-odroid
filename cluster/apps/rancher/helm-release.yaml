@@ -24,7 +24,7 @@ spec:
       retries: 3
   values:
     hostname: "rancher.${SECRET_DOMAIN}"
-    replicas: 3
+    replicas: 2
     ingress:
       enabled: false
     tls: bogusvalue
