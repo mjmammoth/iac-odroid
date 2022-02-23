@@ -25,6 +25,8 @@ spec:
   values:
     env:
       TZ: "Africa/Johannesburg"
+    controller:
+      replicas: 2
     service:
       dns-tcp:
         enabled: false
