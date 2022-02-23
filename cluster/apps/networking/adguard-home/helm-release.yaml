@@ -25,3 +25,8 @@ spec:
   values:
     env:
       TZ: "Africa/Johannesburg"
+    service:
+      dns-tcp:
+        enabled: false
+      dns-udp:
+        enabled: false
