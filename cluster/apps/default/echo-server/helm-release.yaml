@@ -35,13 +35,13 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           kubernetes.io/ingress.class: "traefik"
       hosts:
-        - host: "echo-server.${SECRET_DOMAIN}"
+        - host: "echo.${SECRET_DOMAIN}"
           paths:
             - "/"
       tls:
-        - secretName: echo-server-tls
+        - secretName: echo-tls
           hosts:
-            - "echo-server.${SECRET_DOMAIN}"
+            - "echo.${SECRET_DOMAIN}"
     resources:
       requests:
         cpu: 50m
