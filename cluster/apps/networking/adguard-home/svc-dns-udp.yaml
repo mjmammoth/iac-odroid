@@ -10,7 +10,7 @@ metadata:
   labels:
     app.kubernetes.io/instance: adguard-home
     app.kubernetes.io/name: adguard-home
-  name: adguard-home-dns-udp
+  name: adguard-udp
   namespace: networking
 spec:
   loadBalancerIP: 192.168.0.11
