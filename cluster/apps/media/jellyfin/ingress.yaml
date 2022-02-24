@@ -4,7 +4,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     hajimari.io/enable: "true"
-    hajimari.io/icon: weather-sunset
+    hajimari.io/icon: jellyfish
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     kubernetes.io/ingress.class: traefik
     ingress.kubernetes.io/protocol: http
