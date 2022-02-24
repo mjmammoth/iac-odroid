@@ -28,10 +28,12 @@ spec:
       tag: v0.2.0
     hajimari:
       defaultEnable: false
+      namespaceSelector:
+        any: true
       name: "Mark"
       customApps:
         - name: AdGuard Home
-          url: http://192.168.1.11
+          url: http://192.168.0.11
           icon: shield
       groups:
         - name: Communicate
@@ -104,8 +106,6 @@ spec:
         ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
-          hajimari.io/enable: "true"
-          hajimari.io/icon: "weather-sunset"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
         hosts:
           - host: "hajimari.${SECRET_DOMAIN}"
