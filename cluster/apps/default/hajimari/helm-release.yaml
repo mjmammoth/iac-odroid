@@ -28,15 +28,11 @@ spec:
       tag: v0.2.0
     hajimari:
       defaultEnable: false
-      namespaceSelector:
-        matchNames:
-          - default
-          - networking
-      name: "you"
+      name: "Mark"
       customApps:
-        - name: Some External Cluster Service
-          url: http://192.168.1.100:5000
-          icon: test-tube
+        - name: AdGuard Home
+          url: http://192.168.1.11
+          icon: shield
       groups:
         - name: Communicate
           links:
