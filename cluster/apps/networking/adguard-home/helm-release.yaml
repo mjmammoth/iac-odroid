@@ -28,6 +28,8 @@ spec:
     controller:
       replicas: 2
     service:
+      main:
+        enabled: false
       dns-tcp:
         enabled: false
       dns-udp:

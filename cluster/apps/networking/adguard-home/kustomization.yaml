@@ -5,3 +5,4 @@ resources:
   - helm-release.yaml
   - svc-dns-tcp.yaml
   - svc-dns-udp.yaml
+  - svc-ui.yaml
