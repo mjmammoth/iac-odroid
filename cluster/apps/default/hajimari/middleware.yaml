@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: hajimari-redirect
+  namespace: default
+spec:
+  redirectRegex:
+    permanent: true
+    regex: ^https://hajimari.mark.cloud/(.*)
+    replacement: https://mark.cloud/

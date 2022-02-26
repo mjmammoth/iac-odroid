@@ -1,0 +1,21 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: hajimari-rewrite
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`hajimari.mark.cloud`)
+    middlewares:
+    - name: hajimari-redirect
+      namespace: default
+    services:
+    - name: hajimari
+      port: 3000
+  tls:
+    domains:
+    - main: hajimari.mark.cloud
+    secretName: hajimari-tls
