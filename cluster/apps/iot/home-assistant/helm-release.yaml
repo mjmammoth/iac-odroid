@@ -1,0 +1,50 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: home-assistant
+  namespace: iot
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: home-assistant
+      version: 12.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    env:
+      TZ: "Africa/Johannesburg"
+    hostNetwork: true
+    dnsPolicy: ClusterFirstWithHostNet
+    persistence:
+      config:
+        enabled: true
+        type: configMap
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: home-assistant
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          cert-manager.io/cluster-issuer: letsencrypt-production
+          kubernetes.io/ingress.class: traefik
+        hosts:
+          - host: home-assistant.mark.cloud
+            paths:
+              - path: /
+        tls:
+        - hosts:
+          - home-assistant.mark.cloud
+          secretName: home-tls
