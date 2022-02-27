@@ -1,0 +1,28 @@
+apiVersion: core.k8s.kubemq.io/v1beta1
+kind: KubemqCluster
+metadata:
+    name: kubemq-cluster
+    namespace: kubemq
+spec:
+    replicas: 1
+    key: ENC[AES256_GCM,data:YLs2gPK4hurPb+oWhj4BkPCMX1XLl5bpBecXToFSDL2ljApv,iv:VLcR8REow8Oc5DXaToET2qZ1eiycat4b6vJDU0mvUIg=,tag:uIVZncJeB8CzF7SZ+t5Yzg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1m9wdnp870t9yy7ermhy0gq860mq2urq3fqrefut55v4tzwp3nurs43fg0s
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNK2dRNTdETU1yVEljclA1
+            Z2hOSCtpbmlPRzNFaG04anRCQ20vdDQ0TkdNCkZ1SC9pUTh0ZllqdGJYQWJUSFdC
+            MTVKK01OelFYcWZJTk10Q3lRR0ZyVk0KLS0tIENSRHZOTlRybGo1KzMyQWZMcUVa
+            VmxFUUQvMGFRYUM5SjcxNHU5S2JDZk0KbwtarIEg77MnxyiiM/r8G0WtmRjZIKO0
+            reEiWjVNWwfK8gknNOTgJqFx4gk1JWdukXAdbD575BZNRacrM6Q9WQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2022-02-27T09:17:49Z"
+    mac: ENC[AES256_GCM,data:NKVLmOryax84J3S6J747uEv57eXsf9vYCtsUiYGGMjh2YavmafuFH5n8Z3kP1WhsdxRDWAn/Q7YqyMhJuo8fqBc+HTG55JR/hUV4dDEzKZ677ozy/2OQDyJqjK53CP2I1JRPnHBwDtOtsHVdZe/jqnuozlgG1xpB6i7kEMkjFHM=,iv:7ELEOQez7d9BDkd/1ssZZPyowOlhsarU00ECT0xOhr0=,tag:wnB7L9suGMrg5Tzv1EFzAA==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData|key)$
+    version: 3.7.1
