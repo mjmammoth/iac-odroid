@@ -25,3 +25,4 @@ resources:
   - traefik-charts.yaml
   - weaveworks-kured-charts.yaml
   - rancher-latest.yaml
+  - chartmuseum-charts.yaml
