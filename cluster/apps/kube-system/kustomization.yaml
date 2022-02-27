@@ -6,4 +6,3 @@ resources:
   - reflector
   - reloader
   - registry
-  - kubemq
