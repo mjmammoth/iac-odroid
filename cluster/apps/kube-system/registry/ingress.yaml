@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    kubernetes.io/ingress.class: traefik
+  name: container-registry
+  namespace: kube-system
+spec:
+  rules:
+  - host: "registry.${SECRET_DOMAIN}"
+    http:
+      paths:
+      - backend:
+          service:
+            name: container-registry
+            port:
+              number: 5000
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - "registry.${SECRET_DOMAIN}"
+    secretName: registry-tls
