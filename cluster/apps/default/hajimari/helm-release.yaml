@@ -93,8 +93,8 @@ spec:
               url: "https://www.instapaper.com/u"
             - name: Medium
               url: "http://medium.com"
-            - name: Reddit
-              url: "http://reddit.com"
+            - name: Aeon
+              url: "https://aeon.co/"
         - name: Tech
           links:
             - name: Hacker News
