@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discord-music-bot
+  namespace: media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: discord-music-bot
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: discord-music-bot
+    spec:
+      containers:
+      - env:
+        - name: PREFIX
+          value: "."
+        - name: TZ
+          value: Africa/Johannesburg
+        - name: PUID
+          value: "1000"
+        - name: TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: TOKEN
+              name: discord-music-bot-secret
+        image: docker.io/phasecorex/red-discordbot
+        imagePullPolicy: IfNotPresent
+        name: discord-music-bot
+        volumeMounts:
+        - mountPath: /data
+          name: discord-music-bot-pvc
+      restartPolicy: Always
+      volumes:
+        - name: discord-music-bot-pvc
+          persistentVolumeClaim:
+            claimName: discord-music-bot-pvc
