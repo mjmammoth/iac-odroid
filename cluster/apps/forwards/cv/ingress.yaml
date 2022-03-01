@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    hajimari.io/enable: "true"
+    hajimari.io/icon: file-sign
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    kubernetes.io/ingress.class: traefik
+  name: cv
+  namespace: forwards
+spec:
+  rules:
+  - host: "${SECRET_DOMAIN}"
+    http:
+      paths:
+      - backend:
+          service:
+            name: cv
+            port:
+              number: 80
+        path: /cv
+        pathType: Prefix
+  tls:
+  - hosts:
+    - "${SECRET_DOMAIN}"
+    secretName: jelly-tls

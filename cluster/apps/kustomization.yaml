@@ -8,3 +8,4 @@ resources:
   - media
   - iot
   - monitoring
+  - forwards
