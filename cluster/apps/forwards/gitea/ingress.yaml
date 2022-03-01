@@ -4,14 +4,14 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     hajimari.io/enable: "true"
-    hajimari.io/icon: file-sign
+    hajimari.io/icon: git
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     kubernetes.io/ingress.class: traefik
-  name: cv
+  name: gitea
   namespace: forwards
 spec:
   rules:
-  - host: "${SECRET_DOMAIN}"
+  - host: "gitea.${SECRET_DOMAIN}"
     http:
       paths:
       - backend:
@@ -23,5 +23,5 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - "${SECRET_DOMAIN}"
-    secretName: "${SECRET_DOMAIN}-tls"
+    - "gitea.${SECRET_DOMAIN}"
+    secretName: "gitea-tls"
