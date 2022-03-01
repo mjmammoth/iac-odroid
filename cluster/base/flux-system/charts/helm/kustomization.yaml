@@ -26,3 +26,4 @@ resources:
   - weaveworks-kured-charts.yaml
   - rancher-latest.yaml
   - chartmuseum-charts.yaml
+  - mark-charts.yaml
