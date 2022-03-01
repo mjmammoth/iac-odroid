@@ -5,7 +5,7 @@ metadata:
   namespace: forwards
 spec:
   ports:
-  - name: webui
+  - name: gitea
     port: 80
     protocol: TCP
     targetPort: 30001

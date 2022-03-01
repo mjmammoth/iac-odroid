@@ -7,6 +7,6 @@ subsets:
 - addresses:
   - ip: 192.168.0.103
   ports:
-  - name: webui
+  - name: monica
     port: 30002
     protocol: TCP

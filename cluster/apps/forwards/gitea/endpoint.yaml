@@ -7,6 +7,6 @@ subsets:
 - addresses:
   - ip: 192.168.0.103
   ports:
-  - name: webui
+  - name: gitea
     port: 30001
     protocol: TCP

@@ -5,7 +5,7 @@ metadata:
   namespace: forwards
 spec:
   ports:
-  - name: webui
+  - name: monica
     port: 80
     protocol: TCP
     targetPort: 30002
