@@ -4,6 +4,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/custom-response-headers: "Access-Control-Allow-Origin:https://ui.registry.mark.cloud||Access-Control-Allow-Methods:HEAD,GET,DELETE,OPTIONS||Access-Control-Allow-Headers:Authorization,Accept||Access-Control-Max-Age:1728000||Access-Control-Allow-Credentials:true||Access-Control-Expose-Headers:Docker-Content-Digest"
     kubernetes.io/ingress.class: traefik
   name: container-registry
   namespace: kube-system
