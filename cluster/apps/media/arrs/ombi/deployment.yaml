@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: htpc
+    run: ombi
+  name: ombi
+  namespace: media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: htpc
+      run: ombi
+  template:
+    metadata:
+      labels:
+        app: htpc
+        run: ombi
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Africa/Johannesburg
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: BASE_URL
+          value: /ombi
+        image: lscr.io/linuxserver/ombi:latest
+        name: ombi
+        ports:
+        - containerPort: 3579
+          name: webui
+        volumeMounts:
+        - mountPath: /config
+          name: nfs
+          subPath: ombi
+        - mountPath: /movies
+          name: nfs
+          subPath: media/movies
+        - mountPath: /downloads
+          name: nfs
+          subPath: downloads
+      initContainers:
+      - command:
+        - sh
+        - -c
+        - chown -R 1000:1000 /config
+        image: busybox
+        name: chown
+        volumeMounts:
+        - mountPath: /config
+          name: nfs
+          subPath: ombi
+        - mountPath: /movies
+          name: nfs
+          subPath: media/movies
+      securityContext:
+        fsGroup: 1000
+      volumes:
+      - persistentVolumeClaim:
+          claimName: nfs
+        name: nfs

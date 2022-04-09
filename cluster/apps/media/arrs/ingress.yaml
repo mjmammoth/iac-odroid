@@ -1,0 +1,69 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+  labels:
+    app: htpc
+  name: htpc
+  namespace: media
+spec:
+  rules:
+  - host: media.mark.cloud
+    http:
+      paths:
+      - backend:
+          service:
+            name: ombi
+            port:
+              name: webui
+        path: /ombi
+        pathType: Prefix
+      - backend:
+          service:
+            name: jackett
+            port:
+              name: webui
+        path: /jackett
+        pathType: Prefix
+      - backend:
+          service:
+            name: sonarr
+            port:
+              name: webui
+        path: /sonarr
+        pathType: Prefix
+      - backend:
+          service:
+            name: radarr
+            port:
+              name: webui
+        path: /radarr
+        pathType: Prefix
+      - backend:
+          service:
+            name: bazarr
+            port:
+              name: webui
+        path: /bazarr
+        pathType: Prefix
+      - backend:
+          service:
+            name: prowlarr
+            port:
+              name: webui
+        path: /p
+        pathType: Prefix
+      - backend:
+          service:
+            name: deluge
+            port:
+              name: webui
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - media.mark.cloud
+    secretName: media-tls

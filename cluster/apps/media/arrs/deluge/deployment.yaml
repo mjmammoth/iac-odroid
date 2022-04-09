@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: htpc
+    run: deluge
+  name: deluge
+  namespace: media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: htpc
+      run: deluge
+  template:
+    metadata:
+      labels:
+        app: htpc
+        run: deluge
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Africa/Johannesburg
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        image: lscr.io/linuxserver/deluge:latest
+        name: deluge
+        ports:
+        - containerPort: 8112
+          name: webui
+        volumeMounts:
+        - mountPath: /config
+          name: nfs
+          subPath: deluge
+        - mountPath: /downloads
+          name: nfs
+          subPath: downloads
+      securityContext:
+        fsGroup: 1000
+      volumes:
+      - persistentVolumeClaim:
+          claimName: nfs
+        name: nfs

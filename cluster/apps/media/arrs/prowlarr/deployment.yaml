@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: htpc
+    run: prowlarr
+  name: prowlarr
+  namespace: media
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: htpc
+      run: prowlarr
+  template:
+    metadata:
+      labels:
+        app: htpc
+        run: prowlarr
+    spec:
+      containers:
+      - env:
+        - name: TZ
+          value: Africa/Johannesburg
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        image: linuxserver/prowlarr:0.2.0-develop
+        name: prowlarr
+        ports:
+        - containerPort: 9696
+          name: webui
+        volumeMounts:
+        - mountPath: /config
+          name: nfs
+          subPath: prowlarr
+      securityContext:
+        fsGroup: 1000
+      volumes:
+      - persistentVolumeClaim:
+          claimName: nfs
+        name: nfs
