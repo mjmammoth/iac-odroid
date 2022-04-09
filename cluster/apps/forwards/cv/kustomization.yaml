@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - endpoint.yaml
   - svc.yaml
-  - ingress.yaml
