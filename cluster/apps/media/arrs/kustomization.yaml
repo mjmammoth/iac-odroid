@@ -10,3 +10,4 @@ resources:
   - pvc.yaml
   - ingress.yaml
   - ombi
+  - organizr
