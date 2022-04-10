@@ -8,3 +8,4 @@ resources:
   - deluge
   - pv.yaml
   - pvc.yaml
+  - ingress.yaml
