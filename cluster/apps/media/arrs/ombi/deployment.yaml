@@ -43,20 +43,6 @@ spec:
         - mountPath: /downloads
           name: nfs
           subPath: downloads
-      initContainers:
-      - command:
-        - sh
-        - -c
-        - chown -R 1000:1000 /config
-        image: busybox
-        name: chown
-        volumeMounts:
-        - mountPath: /config
-          name: nfs
-          subPath: ombi
-        - mountPath: /movies
-          name: nfs
-          subPath: media/movies
       securityContext:
         fsGroup: 1000
       volumes:
