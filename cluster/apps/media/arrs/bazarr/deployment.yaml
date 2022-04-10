@@ -52,7 +52,7 @@ spec:
       - command:
         - sh
         - -c
-        - "echo test"
+        - "echo 'Sonarr and Radarr are UP'"
         image: busybox
         name: config
         volumeMounts:

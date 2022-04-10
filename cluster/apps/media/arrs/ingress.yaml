@@ -19,35 +19,28 @@ spec:
             name: ombi
             port:
               name: webui
-        path: /ombi
-        pathType: Prefix
-      - backend:
-          service:
-            name: jackett
-            port:
-              name: webui
-        path: /jackett
+        path: /o
         pathType: Prefix
       - backend:
           service:
             name: sonarr
             port:
               name: webui
-        path: /sonarr
+        path: /s
         pathType: Prefix
       - backend:
           service:
             name: radarr
             port:
               name: webui
-        path: /radarr
+        path: /r
         pathType: Prefix
       - backend:
           service:
             name: bazarr
             port:
               name: webui
-        path: /bazarr
+        path: /b
         pathType: Prefix
       - backend:
           service:
