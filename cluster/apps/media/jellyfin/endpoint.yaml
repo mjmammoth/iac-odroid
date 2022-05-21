@@ -5,7 +5,7 @@ metadata:
   namespace: media
 subsets:
 - addresses:
-  - ip: 192.168.0.107
+  - ip: 192.168.0.105
   ports:
   - name: webui
     port: 8096
