@@ -39,7 +39,7 @@ spec:
           value: "Registry Realm"
         - name: REGISTRY_AUTH_HTPASSWD_PATH
           value: "/auth/htpasswd"
-        image: registry:2.8.0
+        image: registry:2.8.3
         name: container-registry
         ports:
         - containerPort: 5000
